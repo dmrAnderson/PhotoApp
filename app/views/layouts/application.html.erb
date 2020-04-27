@@ -7,9 +7,16 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div class="container">
+      <div class="border-bottom my-2 see-gb-image"></div>
+      <%= yield %>
+      <div class="border-bottom my-2 see-gb-image"></div>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
