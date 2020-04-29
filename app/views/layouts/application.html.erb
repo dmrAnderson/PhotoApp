@@ -14,6 +14,8 @@
     <%= render "layouts/header" %>
     <div class="container">
       <div class="border-bottom my-2 see-gb-image"></div>
+      <%= content_tag(:p, notice, class: "color text-center") if notice %></p>
+      <%= content_tag(:p, alert, class: "alert") if alert %></p>
       <%= yield %>
       <div class="border-bottom my-2 see-gb-image"></div>
     </div>

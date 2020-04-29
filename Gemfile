@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'devise', '~> 4.7', '>= 4.7.1'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
