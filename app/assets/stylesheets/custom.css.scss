@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 body {
   font-family: 'Indie Flower', cursive;
@@ -8,10 +9,13 @@ body {
   background-image: url(image_path('headlights.jpg'));
 }
 
-.see-gb-image {
-  opacity: 0.4;
+.landing-logo {
+  font-size: 2rem;
 }
 
-.color {
-  color: #007bff;
+.jum-set {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  opacity: 0.4;
 }

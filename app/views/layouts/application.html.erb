@@ -5,20 +5,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <%= render "layouts/header" %>
+
     <div class="container">
-      <div class="border-bottom my-2 see-gb-image"></div>
-      <%= content_tag(:p, notice, class: "color text-center") if notice %></p>
-      <%= content_tag(:p, alert, class: "alert") if alert %></p>
+      <%= content_tag(:h2, notice, class: "color text-center") if notice %>
+      <%= content_tag(:h2, alert, class: "alert") if alert %>
       <%= yield %>
-      <div class="border-bottom my-2 see-gb-image"></div>
     </div>
+    
     <%= render "layouts/footer" %>
   </body>
 </html>
