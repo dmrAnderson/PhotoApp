@@ -13,13 +13,10 @@
 
   <body>
     <%= render "layouts/header" %>
-
     <div class="container">
-      <%= content_tag(:h2, notice, class: "color text-center") if notice %>
-      <%= content_tag(:h2, alert, class: "alert") if alert %>
+      <%= render "layouts/notice&alert" %>
       <%= yield %>
     </div>
-    
     <%= render "layouts/footer" %>
   </body>
 </html>
