@@ -1,0 +1,6 @@
+<tr id="photo-<%= photo.id %>">
+  <td><%= photo.description %></td>
+  <td><%= link_to 'Show', photo %></td>
+  <td><%= link_to 'Edit', edit_photo_path(photo), remote: true, id: "edit-photo-#{photo.id}" %></td>
+  <td><%= link_to 'Destroy', photo, method: :delete, remote: true, id: "delete-photo-#{photo.id}" %></td>
+</tr>

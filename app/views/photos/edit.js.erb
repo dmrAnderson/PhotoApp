@@ -1,0 +1,4 @@
+$('form').remove();
+$('a').show();
+$('#new-photo a').show();
+$('#edit-photo-<%= params[:id] %>').hide().parent().append("<%= j render 'form', photo: @photo %>");

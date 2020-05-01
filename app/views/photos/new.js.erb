@@ -1,0 +1,3 @@
+$('form').remove();
+$('a').show();
+$('#new-photo a').hide().parent().append("<%= j render 'form', photo: @photo %>");
