@@ -1,4 +1,5 @@
 $('form').remove();
 $('a').show();
-$('#new-photo a').show();
 $('#edit-photo-<%= params[:id] %>').hide().parent().append("<%= j render 'form', photo: @photo %>");
+$('form').removeClass('mx-auto w-50')
+$('input.form-control').focus();

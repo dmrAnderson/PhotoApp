@@ -2,7 +2,8 @@ class PhotosController < ApplicationController
   before_action :set_photo, except: %i[index new create]
 
   def index
-    @photos = Photo.all.order(id: :desc)
+    @photos = Photo.all.order(updated_at: :desc)
+    @photo = Photo.new
   end
 
   def show

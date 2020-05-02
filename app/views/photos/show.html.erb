@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @photo.description %>
-</p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<div class="card w-50 mx-auto opacity">
+  <h4 class="card-header">Description</h4>
+  <div class="card-body">
+    <%= @photo.description %>
+    <br>
+    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+    <%= link_to 'Back', photos_path %>
+  </div>
+</div>

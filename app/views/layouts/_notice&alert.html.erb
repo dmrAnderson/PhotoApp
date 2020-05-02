@@ -1,5 +1,5 @@
 <% if (alert || notice)%>
-  <h3 class="alert alert-primary opacity-3 mx-auto w-50">
+  <h3 class="alert alert-primary alert-dismissible fade show opacity-3 mx-auto w-50" role="alert">
     <div class="row">
       <div class="col-sm-1 pl-3">
         <svg class="bi bi-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -12,5 +12,8 @@
         <%= alert ? alert : notice %>
       </div>
     </div>
+    <button type="button" class="close font-x2" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </h3>
 <% end %>

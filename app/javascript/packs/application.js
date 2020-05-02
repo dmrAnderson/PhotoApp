@@ -15,3 +15,13 @@ import "bootstrap"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(function() {
+   $("td a.nav-link").hover(
+   function() {
+     $(this).addClass('shadow rounded');
+   }, function() {
+     $(this).removeClass('shadow rounded');
+   }
+ );
+});
