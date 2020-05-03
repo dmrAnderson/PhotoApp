@@ -1,3 +1,2 @@
 $('form').remove();
-$('#edit-photo-<%= params[:id] %>').parents('tr').hide();
-$('tbody').prepend('<%= j render @photo %>');
+$('#edit-photo-<%= params[:id] %>').show().children().text('<%= @photo.description %>');

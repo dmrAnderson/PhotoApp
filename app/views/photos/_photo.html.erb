@@ -1,7 +1,11 @@
 <tr id="photo-<%= photo.id %>">
-  <td><%= link_to "#{photo.description}", edit_photo_path(photo), remote: true, title: "Edit?", class: " nav-link", id: "edit-photo-#{photo.id}" %></td>
+  <td>
+    <%= link_to edit_photo_path(photo), remote: true, title: "Edit?", class: "nav-link", id: "edit-photo-#{photo.id}" do %>
+      <i><%= photo.description %></i>
+    <% end %>
+  </td>
   <td><%= link_to 'Show', photo, class: "badge badge-primary" %></td>
   <td>
-    <%= link_to 'Destroy', photo, method: :delete, remote: true, class: "badge badge-primary", id: "delete-photo-#{photo.id}" %>
+    <%= link_to 'Destroy', photo, method: :delete, remote: true, class: "badge badge-primary" %>
   </td>
 </tr>
