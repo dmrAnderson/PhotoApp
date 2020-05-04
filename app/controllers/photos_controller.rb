@@ -1,15 +1,17 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, except: %i[index new create]
+  before_action :find_photo,         except: %i[index new create show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @photos = Photo.all.order(id: :desc)
   end
 
   def show
+    @photo = Photo.find(params[:id])
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.build
     respond_to do |format|
       format.js
     end
@@ -19,7 +21,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params)
     respond_to do |format|
       if @photo.save
         format.js
@@ -47,8 +49,9 @@ class PhotosController < ApplicationController
   end
 
   private
-    def set_photo
-      @photo = Photo.find(params[:id])
+
+    def find_photo
+      @photo = current_user.photos.find(params[:id])
     end
 
     def photo_params

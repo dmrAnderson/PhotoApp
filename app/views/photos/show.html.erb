@@ -3,7 +3,7 @@
   <div class="card-body">
     <%= @photo.description %>
     <br>
-    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+    <%= link_to 'Edit', edit_photo_path(@photo) if @photo.user == current_user %>
     <%= link_to 'Back', photos_path %>
   </div>
 </div>
