@@ -3,10 +3,18 @@
 
 body {
   font-family: 'Indie Flower', cursive;
+}
+
+.bg-img {
   width: 100%;
   height: 100vh;
   background-size: cover;
   background-image: url(image_path('headlights.jpg'));
+}
+
+.bg-grey {
+  background-color: #ecf0f1;
+  height: 100vh;
 }
 
 .font-x2 {

@@ -11,12 +11,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render "layouts/header" %>
+  <body class="bg-<%= user_signed_in? ? 'grey' : 'img' %>">
     <div class="container">
+      <%= render "layouts/header" %>
       <%= render "layouts/notice&alert" %>
       <%= yield %>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
   </body>
 </html>
