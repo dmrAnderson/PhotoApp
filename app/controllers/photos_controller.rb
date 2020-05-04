@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :find_photo,         except: %i[index new create show]
   before_action :authenticate_user!, except: %i[index show]
+  before_action :owner,              only:   %i[edit update destroy]
 
   def index
     @photos = Photo.all.order(id: :desc)
@@ -50,8 +50,9 @@ class PhotosController < ApplicationController
 
   private
 
-    def find_photo
+    def owner
       @photo = current_user.photos.find(params[:id])
+      redirect_to :root if @photo.nil?
     end
 
     def photo_params
