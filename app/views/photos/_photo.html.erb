@@ -1,13 +1,11 @@
-<tr id="photo-<%= photo.id %>">
-  <td>
-    <%= link_to edit_photo_path(photo), remote: true, title: "Edit?", class: "nav-link", id: "edit-photo-#{photo.id}" do %>
-      <i><%= photo.description %></i>
-    <% end %>
-  </td>
-  <td><%= link_to 'Show', photo, class: "badge badge-primary" %></td>
-  <% if photo.user == current_user %>  
-    <td>
-      <%= link_to 'Destroy', photo, method: :delete, remote: true, class: "badge badge-primary" %>
-    </td>
-  <% end %>
-</tr>
+<div class="row" id="photo-<%= photo.id %>">
+  <div class="col-md-8">
+    <%= link_to (image_tag(photo.image.url, alt: "Uploaded image", class: "rounded")), photo %>
+  </div>
+  <div class="col-md-4">
+    <h4><%= photo.user.name %></h4>
+    <p><%= photo.description %></p>
+    <%= link_to 'Show', photo, class: "btn btn-primary" %>
+  </div>
+</div>
+<hr>
