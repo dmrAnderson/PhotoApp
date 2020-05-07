@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index]
   before_action :owner,              only:   %i[edit update destroy]
 
   def index
@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.build
     respond_to do |format|
       format.js
+      format.html { redirect_to photos_path }
     end
   end
 
@@ -44,6 +45,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
+      format.html { redirect_to :root }
       format.js
     end
   end

@@ -1,10 +1,8 @@
-<div class="card w-75 mx-auto">
+<div class="card w-75 mx-auto <%= ' opacity' unless user_signed_in? %>">
   <h2 class="card-header text-center">Photos</h2>
   <div class="card-body">
-    <i><%= render @photos %></i>
-    <br>
     <% if user_signed_in? %>
-      <div class="text-center" id="new-photo">
+      <div class="text-center border-top-0" id="new-photo">
         <%= link_to new_photo_path, remote: true, class: "btn btn-primary" do %>
           <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
@@ -14,5 +12,9 @@
         <% end %>
       </div>
     <% end %>
+    <hr>
+    <i>
+      <%= render @photos %>
+    </i>
   </div>
 </div>

@@ -1,5 +1,6 @@
 $('form').remove();
 $('a').show();
-$('#photo-<%= params[:id] %>').find('p').append("<%= j render 'form', photo: @photo %>");
-$('form').removeClass('mx-auto w-50')
+$('#photo-<%= params[:id] %>').find('i').hide();
+$('p').append("<%= j render 'form', photo: @photo %>");
+$('form').removeClass();
 $('input#photo_description').focus();

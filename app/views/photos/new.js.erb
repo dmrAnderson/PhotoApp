@@ -1,4 +1,4 @@
-$('form').remove();
-$('a').show();
-$('#new-photo a').hide().parent().append("<%= j render 'form', photo: @photo %>");
-$('#photo_image').click();
+$('#new-photo').hide().parent().prepend("<%= j render 'form', photo: @photo %>");
+$('#photo_image').click().change(function(){
+  $('#photo_description').focus();
+});
