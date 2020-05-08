@@ -8,6 +8,8 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @photo.views += 1
+    @photo.save
   end
 
   def new
@@ -45,7 +47,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to :root }
+      format.html { redirect_to :root, notice: "Deleted" }
       format.js
     end
   end

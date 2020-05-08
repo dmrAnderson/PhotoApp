@@ -16,7 +16,7 @@
     <% else %>
       <h4><%= truncate(photo.user.name, length: 22) %></h4>
     <% end %>
-    <p><%= truncate(photo.description, length: 240) %></p>
+    <p><%= truncate(photo.description, length: 170) %></p>
     <%= link_to 'Show', photo, class: "btn btn-info" if user_signed_in? %>
   </div>
 </div>
