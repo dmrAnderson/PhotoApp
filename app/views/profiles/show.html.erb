@@ -1,0 +1,6 @@
+<div class="card w-75 mx-auto <%= ' opacity' unless user_signed_in? %>">
+  <h2 class="card-header text-center"><%= @user.name %></h2>
+  <div class="card-body">
+    <%= render @user.photos %>
+  </div>
+</div>

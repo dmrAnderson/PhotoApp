@@ -5,7 +5,13 @@
   <div class="col-md-4">
     <% if photo.user == current_user %>
       <div class="d-flex justify-content-between">
-        <h4 class="my-auto"><%= truncate(photo.user.name, length: 22) %></h4>
+        <h4 class="my-auto">
+          <% if controller_name == 'profiles' %>
+            <%= truncate(photo.user.name, length: 22) %>
+          <% else %>
+            <%= link_to truncate(photo.user.name, length: 22), profile_path(photo.user) %>
+          <% end %>
+        </h4>
         <%= link_to photo, method: :delete, remote: true, class: "btn btn-primary" do %>
           <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
@@ -14,7 +20,7 @@
         <% end %>
       </div>
     <% else %>
-      <h4><%= truncate(photo.user.name, length: 22) %></h4>
+      <h4><%= link_to truncate(photo.user.name, length: 22), profile_path(photo.user) %></h4>
     <% end %>
     <p><%= truncate(photo.description, length: 170) %></p>
     <%= link_to 'Show', photo, class: "btn btn-info" if user_signed_in? %>
