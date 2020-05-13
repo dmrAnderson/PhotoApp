@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :photos
+  has_many :subscriptions
 
   def name
     email.split('@')[0].capitalize
