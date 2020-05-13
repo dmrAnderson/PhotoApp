@@ -1,6 +1,12 @@
 <div class="card w-75 mx-auto <%= ' opacity' unless user_signed_in? %>">
   <h2 class="card-header text-center"><%= @user.name %></h2>
-  <%= link_to "+", subscribe_profile_path(@user), method: :patch %>
+  <% unless current_user == @user %>
+    <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
+      <%= link_to "subscribe", unsubscribe_profile_path(@user), method: :delete %>
+    <% else %>
+      <%= link_to "unsubscribe", subscribe_profile_path(@user), method: :patch %>
+    <% end %>
+  <% end %>
   <div class="card-body">
     <%= render @user.photos %>
   </div>
