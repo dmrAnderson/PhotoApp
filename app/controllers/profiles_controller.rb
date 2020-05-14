@@ -2,8 +2,8 @@ class ProfilesController < ApplicationController
   before_action :find_user
   before_action :double_sub,   only: [:subscribe]
   before_action :double_unsub, only: [:unsubscribe]
-  before_action :sub_action_with_my_profile, except: [:show] 
-
+  before_action :sub_action_with_my_profile, except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def show
   end
@@ -14,8 +14,8 @@ class ProfilesController < ApplicationController
   end
 
   def unsubscribe
-    @unsubscribe = current_user.subscriptions.find_by(friend_id: @user.id)
-    @unsubscribe.destroy
+    unsubscribe = current_user.subscriptions.find_by(friend_id: @user.id)
+    unsubscribe.destroy
     redirect_to profile_path(@user), notice: 'unsubscribe'
   end
 

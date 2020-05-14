@@ -1,12 +1,21 @@
-<div class="card w-75 mx-auto <%= ' opacity' unless user_signed_in? %>">
-  <h2 class="card-header text-center"><%= @user.name %></h2>
-  <% unless current_user == @user %>
-    <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
-      <%= link_to "subscribe", unsubscribe_profile_path(@user), method: :delete %>
-    <% else %>
-      <%= link_to "unsubscribe", subscribe_profile_path(@user), method: :patch %>
+<div class="card w-75 mx-auto<%= ' opacity' unless user_signed_in? %>">
+  <h2 class="card-header d-flex justify-content-between">
+    <%= link_to photos_path, class: "btn btn-info" do %>
+      <svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z" clip-rule="evenodd"/>
+      </svg>
     <% end %>
-  <% end %>
+    <%= truncate(@user.name, length: 22) %>
+    <% if user_signed_in? && !(current_user == @user) %>
+      <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
+        <%= link_to "unsubscribe", unsubscribe_profile_path(@user), method: :delete, class: "btn btn-outline-primary" %>
+      <% else %>
+        <%= link_to "subscribe", subscribe_profile_path(@user), method: :patch, class: "btn btn-primary w-105" %>
+      <% end %>
+    <% else %>
+      <div></div>
+    <% end %>
+  </h2>
   <div class="card-body">
     <%= render @user.photos %>
   </div>
