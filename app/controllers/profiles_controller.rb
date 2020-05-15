@@ -10,13 +10,17 @@ class ProfilesController < ApplicationController
 
   def subscribe
     current_user.subscriptions.create(friend_id: @user.id)
-    redirect_to profile_path(@user), notice: 'subscribe'
+    respond_to do |format|
+      format.js
+    end
   end
 
   def unsubscribe
     unsubscribe = current_user.subscriptions.find_by(friend_id: @user.id)
     unsubscribe.destroy
-    redirect_to profile_path(@user), notice: 'unsubscribe'
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
