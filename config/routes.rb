@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :photos
-  devise_for :users
   root 'pages#landing'
-
+  devise_for :users
+  resources :photos
+  get 'profiles/friends_photo'
+  get 'profiles/subscribes_list'
   resources :profiles, only: [:show] do
     member do
-      patch   'subscribe' 
+      patch  'subscribe' 
       delete 'unsubscribe'
     end
   end

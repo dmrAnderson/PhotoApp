@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-4">
     <h4>
-      <% if controller_name == 'profiles' %>
+      <% if action_name == 'show' %>
         <%= truncate(photo.user.name, length: 22) %>
       <% else %>
         <%= link_to truncate(photo.user.name, length: 22), profile_path(photo.user) %>
