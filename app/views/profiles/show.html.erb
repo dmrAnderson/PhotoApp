@@ -9,9 +9,9 @@
     <% if user_signed_in? && !(current_user == @user) %>
       <div id="sub-action">
         <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
-          <%= render "button_for_unsub" %>          
+          <%= render "btn_for_unsub" %>          
         <% else %>
-          <%= render "button_for_sub" %>
+          <%= render "btn_for_sub" %>
         <% end %>
       </div>
     <% else %>

@@ -3,13 +3,13 @@
     <%= link_to (image_tag(photo.image.thumb.url, alt: "Uploaded image", class: "rounded")), photo %>
   </div>
   <div class="col-md-4">
-    <h4>
+    <h5>
       <% if action_name == 'show' %>
-        <%= truncate(photo.user.name, length: 22) %>
+        Uploaded <%= time_ago_in_words(photo.created_at) %> ago
       <% else %>
         <%= link_to truncate(photo.user.name, length: 22), profile_path(photo.user) %>
       <% end %>
-    </h4>
+    </h5>
     <p><%= truncate(photo.description, length: 170) %></p>
     <%= link_to 'Show', photo, class: "btn btn-info" if user_signed_in? %>
   </div>

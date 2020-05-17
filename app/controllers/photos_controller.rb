@@ -46,10 +46,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to :root, notice: "Deleted" }
-      format.js
-    end
+    redirect_to :root, notice: "Deleted"
   end
 
   private

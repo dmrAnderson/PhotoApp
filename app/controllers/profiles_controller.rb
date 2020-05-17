@@ -28,7 +28,10 @@ class ProfilesController < ApplicationController
   end
 
   def friends_photo
-    @photos = Photo.where(user_id: current_user.subscriptions.pluck(:friend_id)).order(created_at: :desc)
+    @photos = Photo.where(
+      user_id:   
+      current_user.subscriptions.pluck(:friend_id)
+    ).order(created_at: :desc)
   end
 
   private
