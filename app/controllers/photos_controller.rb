@@ -7,9 +7,12 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
-    @photo.views += 1
-    @photo.save
+    if @photo = Photo.find_by_id(params[:id])
+      @photo.views += 1
+      @photo.save
+    else
+      redirect_to :root, notice: "This photo doesn't exist"
+    end
   end
 
   def new
@@ -52,8 +55,8 @@ class PhotosController < ApplicationController
   private
 
     def owner
-      @photo = current_user.photos.find(params[:id])
-      redirect_to :root if @photo.nil?
+      @photo = current_user.photos.find_by_id(params[:id])
+      redirect_to :root, notice: "You haven't this photo" if @photo.nil?
     end
 
     def photo_params

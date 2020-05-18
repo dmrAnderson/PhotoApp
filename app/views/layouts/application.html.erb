@@ -13,8 +13,8 @@
 
   <body class="bg-<%= user_signed_in? ? 'color' : 'img' %>">
     <%= render "layouts/header" %>
-    <%= render "layouts/notice&alert" %>
     <div class="container my-3">
+      <%= render "layouts/notice&alert" %>
       <%= yield %>
     </div>
     <%= render "layouts/footer" %>

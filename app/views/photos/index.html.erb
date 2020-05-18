@@ -14,7 +14,7 @@
     <% end %>
     <hr>
     <i>
-      <%= render @photos %>
+      <%= @photos.exists? ? (render @photos) : "Unfortunately, now we haven't one photo, but soon they'll appear" %>
     </i>
   </div>
 </div>
