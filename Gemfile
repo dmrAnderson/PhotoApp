@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'carrierwave', '~> 2.0'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

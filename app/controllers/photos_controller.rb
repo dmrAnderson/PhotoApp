@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :owner,              only:   %i[edit update destroy]
 
   def index
-    @photos = Photo.all.order(id: :desc)
+    @photos = Photo.all.paginate(page: params[:page], per_page: 5).order(id: :desc)
   end
 
   def show

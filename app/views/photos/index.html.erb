@@ -14,7 +14,12 @@
     <% end %>
     <hr>
     <i>
-      <%= @photos.exists? ? (render @photos) : "Unfortunately, now we haven't one photo, but soon they'll appear" %>
+      <% if @photos.exists? %>
+        <%= (render @photos) %>
+        <%= will_paginate @photos, class: "text-center" %> <!-- FIX: work only if page reloaded -->
+      <% else %>
+        <h5>Unfortunately, now we haven't one photo, but soon they'll appear</h5>
+      <% end %>
     </i>
   </div>
 </div>

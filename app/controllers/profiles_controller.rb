@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
     @photos = Photo.where(
       user_id:   
       current_user.subscriptions.pluck(:friend_id)
-    ).order(created_at: :desc)
+    ).paginate(page: params[:page], per_page: 5).order(created_at: :desc)
   end
 
   private

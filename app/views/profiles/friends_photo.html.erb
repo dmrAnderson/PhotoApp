@@ -5,6 +5,7 @@
     </h2>
     <div class="card-body">
       <%= render @photos %>
+      <%= will_paginate @photos, class: "text-center" %> <!-- FIX: work only if page reloaded -->
     </div>
   </div>
 <% else %>
