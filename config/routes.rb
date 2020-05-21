@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   root 'pages#landing'
   devise_for :users
   resources :photos
-  get 'profiles/friends_photo'
-  get 'profiles/subscribes_list'
   resources :profiles, only: [:show] do
     member do
+      get 'friends_photo'
+      get 'subscribes_list'
       patch  'subscribe' 
       delete 'unsubscribe'
     end

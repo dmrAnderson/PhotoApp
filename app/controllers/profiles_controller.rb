@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :find_user
   before_action :authenticate_user!, except: [:show]
-  before_action :find_user,          only: %i[show subscribe unsubscribe]
   before_action :subscribe_on_my,    only: %i[subscribe unsubscribe]
   before_action :double_sub,         only: [:subscribe]
   before_action :double_unsub,       only: [:unsubscribe]
