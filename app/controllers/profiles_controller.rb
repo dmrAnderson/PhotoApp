@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
     end
 
     def find_user
-      if @user = User.find_by_id(params[:id])
+      if @user = User.find_by_name(params[:name])
         @user
       else
         redirect_to :root, notice: "This profile doesn't exist"

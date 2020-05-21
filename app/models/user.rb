@@ -6,4 +6,8 @@ class User < ApplicationRecord
   
   has_many :photos,        dependent: :destroy
   has_many :subscriptions, dependent: :destroy
+
+  def to_param
+    name
+  end
 end
