@@ -4,10 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :photos
-  has_many :subscriptions
-
-  def name
-    email.split('@')[0].capitalize
-  end
+  has_many :photos,        dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 end

@@ -7,11 +7,6 @@ class Photo < ApplicationRecord
 
   belongs_to :user
 
-  def take_a_look
-    views = views.to_i + 1
-    views.save
-  end
-
   private
 
   def image_size
