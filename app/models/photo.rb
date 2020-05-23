@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
   
   validates :description, presence: true, length: {minimum: 2}
   validates :image, presence: true
-  validate :image_size
+  validate  :image_size
 
   belongs_to :user
 
