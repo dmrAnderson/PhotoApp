@@ -1,31 +1,40 @@
-<div class="card w-75 mx-auto<%= ' opacity' unless user_signed_in? %>">
-  <h2 class="card-header d-flex justify-content-between">
-    <%= link_to :back, class: "btn btn-info" do %>
-      <svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z" clip-rule="evenodd"/>
-      </svg>
-    <% end %>
-    <%= truncate(@user.name, length: 22) %>
-    <% if user_signed_in? && !(current_user == @user) %>
-      <div id="sub-action">
-        <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
-          <%= render "btn_for_unsub" %>          
-        <% else %>
-          <%= render "btn_for_sub" %>
-        <% end %>
-      </div>
-    <% else %>
-      <small class="my-auto">
-        <svg class="bi bi-images" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M12.002 4h-10a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1zm-10-1a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2h-10z" clip-rule="evenodd"/>
-          <path d="M10.648 8.646a.5.5 0 01.577-.093l1.777 1.947V14h-12v-1l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/>
-          <path fill-rule="evenodd" d="M4.502 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM4 2h10a1 1 0 011 1v8a1 1 0 01-1 1v1a2 2 0 002-2V3a2 2 0 00-2-2H4a2 2 0 00-2 2h1a1 1 0 011-1z" clip-rule="evenodd"/>
+<% if @photos.exists? %>
+  <div class="card w-75 mx-auto<%= ' opacity' unless user_signed_in? %>">
+    <h2 class="card-header d-flex justify-content-between">
+      <%= link_to :back, class: "btn btn-info" do %>
+        <svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z" clip-rule="evenodd"/>
         </svg>
-        <%= @user.photos.count %>
-      </small>
-    <% end %>
-  </h2>
-  <div class="card-body">
-    <%= render @user.photos %>
+      <% end %>
+      <%= truncate(@user.name, length: 22) %>
+      <% if user_signed_in? && !(current_user == @user) %>
+        <div id="sub-action">
+          <% if current_user.subscriptions.exists?(friend_id: @user.id) %>
+            <%= render "btn_for_unsub" %>          
+          <% else %>
+            <%= render "btn_for_sub" %>
+          <% end %>
+        </div>
+      <% else %>
+        <small class="my-auto">
+          <svg class="bi bi-images" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12.002 4h-10a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V5a1 1 0 00-1-1zm-10-1a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2h-10z" clip-rule="evenodd"/>
+            <path d="M10.648 8.646a.5.5 0 01.577-.093l1.777 1.947V14h-12v-1l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/>
+            <path fill-rule="evenodd" d="M4.502 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM4 2h10a1 1 0 011 1v8a1 1 0 01-1 1v1a2 2 0 002-2V3a2 2 0 00-2-2H4a2 2 0 00-2 2h1a1 1 0 011-1z" clip-rule="evenodd"/>
+          </svg>
+          <%= @photos.count %>
+        </small>
+      <% end %>
+    </h2>
+    <div class="card-body">
+      <%= render @photos %>
+    </div>
+    <%= will_paginate @photos, class: "text-center" %>
   </div>
-</div>
+<% else %>
+  <div class="card w-25 mx-auto">
+    <div class="card-body text-center">
+      You haven't any photo
+    </div>
+  </div>
+<% end %>

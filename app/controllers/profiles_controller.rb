@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
   before_action :double_unsub,       only: [:unsubscribe]
 
   def show
+    @photos = @user.photos.paginate(page: params[:page], per_page: 5)
+                          .order(created_at: :desc)
   end
 
   def subscribe
